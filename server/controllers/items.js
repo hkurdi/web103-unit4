@@ -15,7 +15,7 @@ const getItemById = async (req, res) => {
   try {
     const id = req.params.id; 
     const selectQuery = `
-      SELECT name, color, wheels, interior, package_type, engine 
+      SELECT name, color, wheels, interior, package_type, engine, price 
       FROM custom_items 
       WHERE id = $1
     `;
@@ -33,10 +33,10 @@ const getItemById = async (req, res) => {
 
 const createItem = async (req, res) => {
   try {
-    const { name, color, wheels, interior, package_type, engine } = req.body; 
+    const { name, color, wheels, interior, package_type, engine, price } = req.body; 
     const insertQuery = `
-      INSERT INTO custom_items (name, color, wheels, interior, package_type, engine)
-      VALUES($1, $2, $3, $4, $5, $6)
+      INSERT INTO custom_items (name, color, wheels, interior, package_type, engine, price)
+      VALUES($1, $2, $3, $4, $5, $6, $7)
       RETURNING *
     `;
     const results = await pool.query(insertQuery, [
@@ -46,6 +46,7 @@ const createItem = async (req, res) => {
       interior,
       package_type,
       engine,
+      price,
     ]);
     res.status(201).json(results.rows[0]); 
   } catch (error) {
@@ -56,12 +57,12 @@ const createItem = async (req, res) => {
 const updateItem = async (req, res) => {
   try {
     const id = parseInt(req.params.id); 
-    const { name, color, wheels, interior, package_type, engine } = req.body;
+    const { name, color, wheels, interior, package_type, engine, price } = req.body;
 
     const updateQuery = `
       UPDATE custom_items 
-      SET name = $1, color = $2, wheels = $3, interior = $4, package_type = $5, engine = $6
-      WHERE id = $7
+      SET name = $1, color = $2, wheels = $3, interior = $4, package_type = $5, engine = $6, price = $7
+      WHERE id = $8
       RETURNING *
     `;
     const results = await pool.query(updateQuery, [
@@ -71,6 +72,7 @@ const updateItem = async (req, res) => {
       interior,
       package_type,
       engine,
+      price,
       id,
     ]);
 

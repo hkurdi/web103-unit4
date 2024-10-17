@@ -32,6 +32,7 @@ const ViewCars = () => {
                                     <p><span className="font-semibold">Package:</span> {item.package_type}</p>
                                     <p><span className="font-semibold">Wheels:</span> {item.wheels}</p>
                                     <p><span className="font-semibold">Interior:</span> {item.interior}</p>
+                                    <p><span className="font-semibold">Price:</span> {item.price}</p>
                                 </div>
                                 <div className="mt-6">
                                     <Link

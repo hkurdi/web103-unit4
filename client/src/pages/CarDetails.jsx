@@ -53,6 +53,7 @@ const CarDetails = () => {
                     <p className="text-gray-700"><span className="font-semibold">Package:</span> {item.package_type}</p>
                     <p className="text-gray-700"><span className="font-semibold">Wheels:</span> {item.wheels}</p>
                     <p className="text-gray-700"><span className="font-semibold">Interior:</span> {item.interior}</p>
+                    <p className="text-gray-700"><span className="font-semibold">Price:</span> {item.price}</p>
                 </div>
                 <div className="mt-6 flex justify-between">
                     <Link 

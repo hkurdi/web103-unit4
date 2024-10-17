@@ -11,7 +11,8 @@ const createItemsTable = async () => {
       package_type VARCHAR(255) NOT NULL,
       engine VARCHAR(255) NOT NULL,
       wheels VARCHAR(255) NOT NULL,
-      interior VARCHAR(255) NOT NULL
+      interior VARCHAR(255) NOT NULL,
+      price VARCHAR(255) NOT NULL
     );
   `;
 
